@@ -41,7 +41,7 @@ procedure TForm3.Button1Click(Sender: TObject);
 begin
   time_check := Form3.SpinEdit1.Value.ToString + ':' +
     Form3.SpinEdit2.Value.ToString + ':' + Form3.SpinEdit3.Value.ToString;
-  Form1.Timer.Enabled := True;
+  ////
 end;
 
 procedure TForm3.FormCreate(Sender: TObject);
@@ -57,7 +57,6 @@ end;
 
 procedure TForm3.SpinEdit1Change(Sender: TObject);
 begin
-  Form1.Timer.Enabled := false;
   if SpinEdit1.Value = 23 then
     SpinEdit2.MaxValue := 59
 
@@ -70,7 +69,6 @@ end;
 
 procedure TForm3.SpinEdit2Change(Sender: TObject);
 begin
-  Form1.Timer.Enabled := false;
   if (SpinEdit1.Value = 23) and (SpinEdit2.Value = 59) then
   begin
     SpinEdit2.MaxValue := 59;
@@ -91,7 +89,6 @@ end;
 
 procedure TForm3.SpinEdit3Change(Sender: TObject);
 begin
-  Form1.Timer.Enabled := false;
   if SpinEdit3.Value > 59 then
   begin
     SpinEdit3.Value := 0;

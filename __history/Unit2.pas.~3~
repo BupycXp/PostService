@@ -41,7 +41,8 @@ procedure TForm3.Button1Click(Sender: TObject);
 begin
   time_check := Form3.SpinEdit1.Value.ToString + ':' +
     Form3.SpinEdit2.Value.ToString + ':' + Form3.SpinEdit3.Value.ToString;
-  Form1.Timer.Enabled := True;
+
+  /// /
 end;
 
 procedure TForm3.FormCreate(Sender: TObject);

@@ -5,7 +5,6 @@ object ServiceOVOMail: TServiceOVOMail
   Interactive = True
   AfterInstall = ServiceAfterInstall
   OnExecute = ServiceExecute
-  OnStart = ServiceStart
   Height = 560
   Width = 810
 end

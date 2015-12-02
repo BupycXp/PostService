@@ -63,6 +63,8 @@ type
     OpenDialog1: TOpenDialog;
     Edit_port_smtp: TEdit;
     N2: TMenuItem;
+    AutoScroll_CheckBox: TCheckBox;
+    Button3: TButton;
     procedure Button1Click(Sender: TObject);
     procedure Timer_mailTimer(Sender: TObject);
     procedure TimerTimer(Sender: TObject);
@@ -73,6 +75,7 @@ type
     procedure N1Click(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure N2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
   private
     procedure WMsysCommand(var Msg: TWMSysCommand); message WM_SYSCOMMAND;
   public
@@ -237,6 +240,8 @@ begin
         end;
         // IdPOP31.Delete(j);
         Memo1.Lines.Add('');
+        if AutoScroll_CheckBox.Checked then
+        Memo1.Perform(EM_LINESCROLL,0,Memo1.Lines.Count-1);
       end;
     end
     else
@@ -284,6 +289,11 @@ begin
   Label13.Font.Color := clGreen;
   Label13.Caption := 'Письмо отправлено!';
   IdSMTP1.Disconnect();
+end;
+
+procedure TForm1.Button3Click(Sender: TObject);
+begin
+Memo1.Clear;
 end;
 
 procedure SaveSettings;

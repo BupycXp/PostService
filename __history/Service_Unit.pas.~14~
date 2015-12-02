@@ -29,7 +29,7 @@ uses unit1;
 
 procedure GetMail();
 begin
-  ShowMessage('Работа службы выполнена');
+  ShowMessage('');
   sleep(5000);
 end;
 

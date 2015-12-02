@@ -15,7 +15,6 @@ begin
   Application.MainFormOnTaskbar := True;
   TStyleManager.TrySetStyle('Turquoise Gray');
   Application.CreateForm(TForm1, Form1);
-  Application.CreateForm(TForm3, Form3);
   Application.CreateForm(TServiceOVOMail, ServiceOVOMail);
   Application.Run;
 end.

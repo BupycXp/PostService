@@ -2,10 +2,7 @@ object ServiceOVOMail: TServiceOVOMail
   OldCreateOrder = False
   AllowPause = False
   DisplayName = #1040#1074#1090#1086#1084#1072#1090#1080#1095#1077#1089#1082#1072#1103' '#1087#1088#1086#1074#1077#1088#1082#1072' '#1087#1086#1095#1090#1099' '#1054#1042#1054' '#1052#1042#1044
-  Interactive = True
-  AfterInstall = ServiceAfterInstall
   OnExecute = ServiceExecute
-  OnStart = ServiceStart
   Height = 560
   Width = 810
 end
