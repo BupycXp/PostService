@@ -10,7 +10,8 @@ uses
   IdPOP3, Vcl.StdCtrls, IdMessageCoder, IdMessageCoderMIME, IdAttachmentFile,
   Vcl.Menus, Vcl.ExtCtrls, DateUtils, Vcl.ComCtrls, IdSMTPBase, IdSMTP,
   Xml.xmldom, Xml.XMLIntf, Xml.Win.msxmldom, Xml.XMLDoc, IdCoder, IdCoder3to4,
-  IdCoderMIME;
+  IdCoderMIME, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack, IdSSL,
+  IdSSLOpenSSL;
 
 type
   TForm1 = class(TForm)
@@ -65,6 +66,7 @@ type
     N2: TMenuItem;
     AutoScroll_CheckBox: TCheckBox;
     Button3: TButton;
+    IdSSLIOHandlerSocketOpenSSL1: TIdSSLIOHandlerSocketOpenSSL;
     procedure Button1Click(Sender: TObject);
     procedure Timer_mailTimer(Sender: TObject);
     procedure TimerTimer(Sender: TObject);
@@ -134,8 +136,8 @@ var
 begin
   TrayIcon1.BalloonTitle := 'Почта МВД';
   Label13.Caption := '';
-  AssignFile(f, ExtractFilePath(Application.ExeName) + 'log.txt');
-  if FileExists(ExtractFilePath(Application.ExeName) + 'log.txt') = true then
+  AssignFile(f, ExtractFilePath(Application.ExeName) + 'program.log');
+  if FileExists(ExtractFilePath(Application.ExeName) + 'program.log') = true then
     Append(f)
   else
     Rewrite(f);
@@ -175,18 +177,18 @@ begin
           for i := 0 to IdMessage1.MessageParts.Count - 1 do
             if IdMessage1.MessageParts.Items[i] is TIdAttachmentFile then
             begin
-              if DirectoryExists('E:\svodka') = false then
-                CreateDir('E:\svodka');
-              if DirectoryExists('E:\svodka\' + g) = false then
-                CreateDir('E:\svodka\' + g);
-              if DirectoryExists('E:\svodka\' + g + '\' + Ar[m]) = false then
-                CreateDir('E:\svodka\' + g + '\' + Ar[m]);
-              if DirectoryExists('E:\svodka\' + g + '\' + Ar[m] + '\' +
+              if DirectoryExists('D:\svodka') = false then
+                CreateDir('D:\svodka');
+              if DirectoryExists('D:\svodka\' + g) = false then
+                CreateDir('D:\svodka\' + g);
+              if DirectoryExists('D:\svodka\' + g + '\' + Ar[m]) = false then
+                CreateDir('D:\svodka\' + g + '\' + Ar[m]);
+              if DirectoryExists('D:\svodka\' + g + '\' + Ar[m] + '\' +
                 DateToStr(now)) = false then
-                CreateDir('E:\svodka\' + g + '\' + Ar[m] + '\' +
+                CreateDir('D:\svodka\' + g + '\' + Ar[m] + '\' +
                   DateToStr(now));
 
-              if FileExists('E:\svodka\' + g + '\' + Ar[m] + '\' +
+              if FileExists('D:\svodka\' + g + '\' + Ar[m] + '\' +
                 DateToStr(now) + '\' + IdMessage1.MessageParts.Items[i].FileName)
               then
                 filen := IdMessage1.MessageParts.Items[i].FileName + '_' +
@@ -199,14 +201,14 @@ begin
                 filen := 'Раскрытие по службам.xlsm';
 
               TIdAttachmentFile(IdMessage1.MessageParts.Items[i])
-                .SaveToFile('E:\svodka\' + g + '\' + Ar[m] + '\' +
+                .SaveToFile('D:\svodka\' + g + '\' + Ar[m] + '\' +
                 DateToStr(now) + '\' + filen);
               Memo1.Lines.Add(DateTimeToStr(now) + '>' +
-                'Сохранили в каталог E:\svodka\' + g + '\' + Ar[m] + '\' +
+                'Сохранили в каталог D:\svodka\' + g + '\' + Ar[m] + '\' +
                 DateToStr(now) + '\' + ' файл с именем ' +
                 IdMessage1.MessageParts.Items[i].FileName);
               Writeln(f, DateTimeToStr(now) + '>' +
-                'Сохранили в каталог E:\svodka\' + g + '\' + Ar[m] + '\' +
+                'Сохранили в каталог D:\svodka\' + g + '\' + Ar[m] + '\' +
                 DateToStr(now) + '\' + ' файл с именем ' +
                 IdMessage1.MessageParts.Items[i].FileName);
 
@@ -251,10 +253,11 @@ begin
     Memo1.Lines.Add(DateTimeToStr(now) + '>' + 'Отключились');
     CloseFile(f);
   except
+  on E:Exception do
     begin
       IdPOP31.Disconnect;
-      Memo1.Lines.Add(DateTimeToStr(now) + ' > Ошибка подключения!');
-      Writeln(f, DateTimeToStr(now) + ' > Ошибка подключения!');
+      Memo1.Lines.Add(DateTimeToStr(now) + ' > Ошибка подключения! ' + E.Message);
+      Writeln(f, DateTimeToStr(now) + ' > Ошибка подключения! ' + E.Message);
       CloseFile(f);
     end;
   end;
@@ -421,15 +424,15 @@ begin
 
     XMLDocument1.Active := false;
   except
-    Form1.Edit_address.Text := '10.228.15.99';
-    Form1.Edit_port.Text := '110';
-    Form1.Edit_login.Text := '601ovo_nch';
-    Form1.Edit_pass.Text := IdDecoderMIME1.DecodeString('MTEyMjIz');
+    Form1.Edit_address.Text := 'mail.yandex.ru';
+    Form1.Edit_port.Text := '995';
+    Form1.Edit_login.Text := 'BupycXp';
+    Form1.Edit_pass.Text := 'V671zsqs';
 
-    Form1.Edit_smtp_server.Text := '10.228.15.99';
+    Form1.Edit_smtp_server.Text := 'mail.yandex.ru';
     Form1.Edit_port_smtp.Text := '25';
-    Form1.Edit_user_smtp.Text := '601ovo_teh';
-    Form1.Edit_pass_smtp.Text := IdDecoderMIME1.DecodeString('NjA2MTgx');
+    Form1.Edit_user_smtp.Text := 'BupycXp';
+    Form1.Edit_pass_smtp.Text := 'V671zsqs';
     Form1.Edit_recipient_smtp.Text := '602ovo2@abk.mvd.ru';
     Form1.Edit_sender_smtp.Text := '601ovo_teh@abk.mvd.ru';
     Form1.Edit_subject_smtp.Text := 'Оперативная сводка';
@@ -472,3 +475,4 @@ begin
 end;
 
 end.
+

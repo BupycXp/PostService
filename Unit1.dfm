@@ -304,7 +304,10 @@ object Form1: TForm1
     end
   end
   object IdPOP31: TIdPOP3
+    IOHandler = IdSSLIOHandlerSocketOpenSSL1
     AutoLogin = True
+    UseTLS = utUseImplicitTLS
+    Port = 995
     SASLMechanisms = <>
     Left = 232
     Top = 120
@@ -378,5 +381,18 @@ object Form1: TForm1
   object OpenDialog1: TOpenDialog
     Left = 53
     Top = 169
+  end
+  object IdSSLIOHandlerSocketOpenSSL1: TIdSSLIOHandlerSocketOpenSSL
+    Destination = ':995'
+    MaxLineAction = maException
+    Port = 995
+    DefaultPort = 0
+    SSLOptions.Method = sslvSSLv3
+    SSLOptions.SSLVersions = [sslvSSLv3]
+    SSLOptions.Mode = sslmUnassigned
+    SSLOptions.VerifyMode = []
+    SSLOptions.VerifyDepth = 0
+    Left = 341
+    Top = 49
   end
 end

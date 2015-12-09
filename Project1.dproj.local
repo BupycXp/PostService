@@ -1,17 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.291,D:\Projects\110\Unit3.pas=D:\Projects\110\Service_Unit.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.163,=D:\Projects\110\Unit3.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.291,D:\Projects\110\Service_Unit.pas=D:\Projects\110\Unit3.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.514,C:\Users\Администратор\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\Администратор\Desktop\110\Project1.dproj</Transaction>
     <Transaction>1899.12.30 00:00:00.000.065,=D:\Projects\110\Unit3.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.606,C:\Users\Администратор\Desktop\110\Unit1.pas=C:\Users\Администратор\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.514,C:\Users\Администратор\Desktop\110\Project1.dproj=C:\Users\Администратор\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.627,D:\Projects\110\Unit3.pas=D:\Projects\110\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.075,D:\Projects\PostService\Service_Unit.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.627,D:\Projects\110\Unit2.dfm=D:\Projects\110\Unit3.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.291,D:\Projects\110\Service_Unit.dfm=D:\Projects\110\Unit3.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.163,=D:\Projects\110\Unit3.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.627,D:\Projects\110\Unit2.pas=D:\Projects\110\Unit3.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.590,=C:\Users\Администратор\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.291,D:\Projects\110\Unit3.dfm=D:\Projects\110\Service_Unit.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.627,D:\Projects\110\Unit3.dfm=D:\Projects\110\Unit2.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.983,D:\Projects\110\Unit2.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.606,C:\Users\Администратор\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\Администратор\Desktop\110\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.606,C:\Users\Администратор\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\Администратор\Desktop\110\Unit1.dfm</Transaction>
     <Transaction>1899.12.30 00:00:00.000.916,=D:\Projects\110\Unit2.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.606,C:\Users\Администратор\Desktop\110\Unit1.dfm=C:\Users\Администратор\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.983,D:\Projects\110\Unit2.pas=</Transaction>
   </Transactions>
 </BorlandProject>
